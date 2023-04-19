@@ -1,0 +1,16 @@
+
+DeploymentName: node-react-deploy
+ServiceName: node-react-service
+replicaCount: 1
+
+image:
+  repository: vamsic999/node-react-app:v2
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v2"
+
+service:
+  name: node-react-app
+  type: LoadBalancer
+  port: 80
+  targetport: 80
