@@ -12,5 +12,5 @@ image:
 service:
   name: node-react-app
   type: NodePort
-  port: 8081
-  targetport: 8081
+  port: 70
+  targetport: 70
