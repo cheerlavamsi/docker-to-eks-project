@@ -11,6 +11,6 @@ image:
 
 service:
   name: node-react-app
-  type: NodePort
+  type: LoadBalancer
   port: 70
   targetport: 70
