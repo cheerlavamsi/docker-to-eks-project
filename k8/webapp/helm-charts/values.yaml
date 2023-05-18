@@ -12,5 +12,5 @@ image:
 service:
   name: node-react-app
   type: LoadBalancer
-  port: 70
-  targetport: 70
+  port: 80
+  targetport: 80

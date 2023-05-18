@@ -1,0 +1,14 @@
+
+DeploymentName: jenkins_deployment
+ServiceName: jenkins_svc
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  
+service:
+  type: ClusterIP
+  port: 80
+
