@@ -26,5 +26,5 @@ jobs:
 
     - name: Run Source code
       run: |
-        cd actions
-        python apicall.py
+        #cd actions
+        python actions/apicall.py
