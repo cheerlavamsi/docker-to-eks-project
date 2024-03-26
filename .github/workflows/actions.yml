@@ -1,26 +1,18 @@
 # Sample Test
 name: Run python code 
 
-on: 
- workflow_call:
-  inputs:
-   repository:
-    type: string
-    default: ${{ github.repository }}
-   branch:
-    type: string
-    default: ${{ github.ref }}
-  
-  
+on: [workflow_dispatch]  
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+
     strategy:
       matrix:
         python-version: [3.8, 3.9]
-
+        
+    
     steps:
     - name: Checkout Source Code
       uses: .github/actions/checkout@v1
