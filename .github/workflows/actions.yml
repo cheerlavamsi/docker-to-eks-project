@@ -15,7 +15,7 @@ jobs:
     
     steps:
     - name: Checkout Source Code
-      uses: cheerlavamsi/Shell_Scripts/.github/actions/checkout@v2
+      uses: cheerlavamsi/docker-to-eks-project/.github/actions/checkout@v2
       
        
     - name: setup python
