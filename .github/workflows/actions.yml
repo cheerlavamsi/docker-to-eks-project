@@ -16,9 +16,7 @@ jobs:
     steps:
     - name: Checkout Source Code
       uses: .github/actions/checkout@v1
-      with:
-       repository: ${{ inputs.repository }}
-       ref: ${{ inputs.branch }}
+      
        
     - name: setup python
       uses: actions/setup-python@v4
