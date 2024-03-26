@@ -26,5 +26,5 @@ jobs:
 
     - name: Run Source code
       run: |
-        cd python
-        python rest_api_cal.py
+        cd actions
+        python apicall.py
