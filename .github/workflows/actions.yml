@@ -15,7 +15,7 @@ jobs:
     
     steps:
     - name: Checkout Source Code
-      uses: .github/actions/checkout@v1
+      uses: cheerlavamsi/Shell_Scripts/.github/action/checkout@v1
       
        
     - name: setup python
