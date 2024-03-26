@@ -1,7 +1,17 @@
 # Sample Test
 name: Run python code 
 
-on: [push]
+on: 
+ workflow_call:
+  inputs:
+   repository:
+    type: string
+    default: ${{ github.repository }}
+   branch:
+    type: string
+    default: ${{ github.ref }}
+  
+  
 
 jobs:
   build:
