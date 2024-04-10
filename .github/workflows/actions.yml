@@ -1,35 +1,40 @@
-# Sample Test
-name: Run python code 
+name: Terraform Test
 
-on: [workflow_dispatch]  
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_version:
+        description: 'Terraform Version'
+        required: true
+        default: '0.15.5'
+      db_password:
+        description: 'Database Password'
+        required: true
 
 jobs:
-  build:
+  terraform:
+    name: Run Terraform
     runs-on: ubuntu-latest
 
-
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9]
-        
-    
     steps:
-    - name: Checkout Source Code
-      uses: actions/checkout@v2
-      
-       
-    - name: setup python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
-        pip install requests
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ github.event.inputs.terraform_version }}
 
-    - name: Run Source code
-      run: |
-        #cd actions
-        python .github/actions/apicall.py
+      - name: Set up PostgreSQL
+        run: |
+          echo "Setting up PostgreSQL"
+          # Add commands to set up PostgreSQL if needed
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
