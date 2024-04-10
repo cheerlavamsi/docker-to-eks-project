@@ -1,0 +1,40 @@
+name: Terraform Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_version:
+        description: 'Terraform Version'
+        required: true
+        default: '0.15.5'
+      db_password:
+        description: 'Database Password'
+        required: true
+
+jobs:
+  terraform:
+    name: Run Terraform
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ github.event.inputs.terraform_version }}
+
+      - name: Set up PostgreSQL
+        run: |
+          echo "Setting up PostgreSQL"
+          # Add commands to set up PostgreSQL if needed
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
